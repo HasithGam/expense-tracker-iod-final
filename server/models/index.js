@@ -1,4 +1,5 @@
 'use strict'
 module.exports = {
-    IncomeModel: require('./incomeModel')
+    IncomeModel: require('./incomeModel'),
+    ExpensesModel: require('./expenseModel')
 };

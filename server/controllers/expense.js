@@ -1,9 +1,9 @@
 "use strict";
-const Models = require("../models");
+const expensesModel = require("../models/expenseModel");
 
-const getIncome = (res) => {
-    //Find all income
-    Models.IncomeModel.find({})
+const getExpense = (res) => {
+    //Find all Expenses
+    expensesModel.find({})
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -11,10 +11,10 @@ const getIncome = (res) => {
         })
 }
 
-const addIncome = (data, res) => {
-    // Add income to mongo DB database
+const addExpense = (data, res) => {
+    // Add Expenses to mongo DB database
     console.log(data);
-    new Models.IncomeModel(data).save()
+    new expensesModel(data).save()
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -22,9 +22,9 @@ const addIncome = (data, res) => {
         });
 };
 
-const updateIncome = (req, res) => {
-    // updates the Income matching the ID from the param using JSON data POSTed in request body
-    Models.IncomeModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+const updateExpense = (req, res) => {
+    // updates the Expenses matching the ID from the param using JSON data POSTed in request body
+    expensesModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -32,9 +32,9 @@ const updateIncome = (req, res) => {
         })
 }
 
-const deleteIncome = (req, res) => {
-    // deletes the user matching the ID from the param
-    Models.IncomeModel.findByIdAndDelete(req.params.id)
+const deleteExpense = (req, res) => {
+    // deletes the Expenses matching the ID from the param
+    expensesModel.findByIdAndDelete(req.params.id)
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {
             console.log(err);
@@ -43,5 +43,5 @@ const deleteIncome = (req, res) => {
 };
 
 
-module.exports = { getIncome, addIncome, updateIncome, deleteIncome };
+module.exports = { getExpense, addExpense, updateExpense, deleteExpense };
 

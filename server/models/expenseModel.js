@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const IncomeSchema = new Schema({
+const ExpenseSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -16,7 +16,7 @@ const IncomeSchema = new Schema({
     },
     type: {
         type: String,
-        default: "income"
+        default: "expense"
     },
     date: {
         type: Date,
@@ -35,9 +35,6 @@ const IncomeSchema = new Schema({
         trim: true
     },
 
-}, {
-    timestamps: true,
-    collection: "incomes"
-})
+}, { timestamps: true, collection: "expenses" })
 
-module.exports = mongoose.model("income", IncomeSchema);
+module.exports = mongoose.model("expense", ExpenseSchema);

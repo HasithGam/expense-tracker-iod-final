@@ -33,7 +33,7 @@ const updateIncome = (req, res) => {
 }
 
 const deleteIncome = (req, res) => {
-    // deletes the user matching the ID from the param
+    // deletes the Income matching the ID from the param
     Models.IncomeModel.findByIdAndDelete(req.params.id)
         .then(data => res.send({ result: 200, data: data }))
         .catch(err => {

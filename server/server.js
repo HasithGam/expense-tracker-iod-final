@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const { db } = require('./db/db');
-const { readdirSync } = require('fs');
-const transaction = require('./routes/transactions');
+const incomeRoutes = require('./routes/incomeRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 const app = express();
 
 
@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.use('/api', transaction);
+app.use('/api/income', incomeRoutes);
+app.use('/api/expense', expenseRoutes);
 
 const server = () => {
     db();
