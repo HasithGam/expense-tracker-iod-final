@@ -6,6 +6,9 @@ let Controllers = require("../controllers");
 router.get('/', (req, res) => {
     Controllers.Incomes.getIncome(res);
 })
+router.get('/:id', (req, res) => {
+    Controllers.Incomes.getIncomeById(req, res);
+})
 router.post('/add', (req, res) => {
     Controllers.Incomes.addIncome(req.body, res);
 });

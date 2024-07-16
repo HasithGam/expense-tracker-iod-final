@@ -12,7 +12,7 @@ function Hero() {
                 </h1>
 
                 <p className="mt-4 sm:text-xl/relaxed">
-                    Start tracking transactions and secure your savings
+                    Unlock the magic of mindful spending and watch your savings.
                 </p>
 
                 <div className="mt-8 flex flex-wrap justify-center gap-4">

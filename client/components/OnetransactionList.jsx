@@ -4,7 +4,7 @@ import useSWR, { mutate } from 'swr';
 import { fetcher } from '@/lib';
 import { Skeleton } from './ui/skeleton';
 import TransactionDataTable from './onetransaction/DataTable';
-import { columns } from './onetransaction/columns';
+import columns from './onetransaction/columns';  // Correct import as default export
 
 const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/income`;
 
@@ -64,11 +64,16 @@ function OnetransactionList() {
     }
   };
 
+  const handleEdit = (row) => {
+    // Implement your edit functionality here
+    console.log('Edit clicked for row:', row);
+  };
+
   return (
     <div>
       <h1 className='pt-5 pb-5 text-2xl'>Income Statement</h1>
       <TransactionDataTable
-        columns={columns(handleUpdate, handleDelete)}
+        columns={columns}  // Pass columns as a function
         data={incomes.data}
         onUpdate={handleUpdate}
         onDelete={handleDelete}

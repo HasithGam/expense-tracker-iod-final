@@ -10,6 +10,20 @@ const getIncome = (res) => {
             res.send({ result: 500, error: err.message })
         })
 }
+const getIncomeById = (req, res) => {
+    // Find income by ID
+    Models.IncomeModel.findById(req.params.id)
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({ result: 404, error: 'Income not found' });
+            }
+            res.status(200).send({ result: 200, data: data });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send({ result: 500, error: err.message });
+        });
+};
 
 const addIncome = (data, res) => {
     // Add income to mongo DB database
@@ -43,7 +57,7 @@ const deleteIncome = (req, res) => {
 };
 
 
-module.exports = { getIncome, addIncome, updateIncome, deleteIncome };
+module.exports = { getIncome, addIncome, updateIncome, deleteIncome, getIncomeById };
 
 
 
