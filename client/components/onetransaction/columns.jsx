@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Button } from '../ui/button';
 
-const columns = (handleEdit, handleUpdate, handleDelete) => [
+const columns = (handleEdit, handleDelete) => [
   {
     accessorKey: '_id',
     header: 'ID',
@@ -52,7 +52,6 @@ const columns = (handleEdit, handleUpdate, handleDelete) => [
 
 columns.propTypes = {
   handleEdit: PropTypes.func.isRequired,
-  handleUpdate: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
 

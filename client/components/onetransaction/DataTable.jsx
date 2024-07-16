@@ -18,38 +18,12 @@ import {
 } from '@/components/ui/table';
 import UpdateIncome from '@/app/(routes)/dashboard/income/_components/UpdateIncome';
 
-const TransactionDataTable = ({ columns, data = [], onUpdate, onDelete }) => {
-  const [editableRows, setEditableRows] = useState({});
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [currentRow, setCurrentRow] = useState(null);
-
-  const handleEdit = (row) => {
-    setCurrentRow(row.original); // Set the current row data
-    setModalIsOpen(true); // Open the modal
-  };
-
-  const handleSave = async (e) => {
-    e.preventDefault();
-    try {
-      await onUpdate(currentRow);
-      setModalIsOpen(false); // Close the modal
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const handleModalChange = (name, value) => {
-    setCurrentRow((prevRow) => ({
-      ...prevRow,
-      [name]: value,
-    }));
-  };
-
-  const updatedColumns = columns(handleEdit, handleSave, onDelete);
+const TransactionDataTable = ({ columns, data = [],onUpdate, onDelete }) => {
+  const actionColums = columns(onUpdate, onDelete);
 
   const table = useReactTable({
     data,
-    columns: updatedColumns,
+    columns: actionColums,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -110,15 +84,6 @@ const TransactionDataTable = ({ columns, data = [], onUpdate, onDelete }) => {
           )}
         </TableBody>
       </Table>
-      {currentRow && (
-        <UpdateIncome
-          row={currentRow}
-          isOpen={modalIsOpen}
-          onClose={() => setModalIsOpen(false)}
-          onSave={handleSave}
-          onChange={handleModalChange}
-        />
-      )}
     </div>
   );
 };
