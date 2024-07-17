@@ -1,46 +1,52 @@
 "use client";
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
-const UpdateIncome = ({ row, isOpen, onClose, onSave, onChange }) => {
-  if (!isOpen) return null;
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    onChange(name, value);
-  };
-
+function UpdateIncome() {
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
-          &times;
-        </span>
-        <form onSubmit={onSave}>
-          {Object.keys(row).map((key) => (
-            <div key={key}>
-              <label>{key}</label>
-              <input
-                type="text"
-                name={key}
-                value={row[key]}
-                onChange={handleInputChange}
-              />
+    <div>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Edit Income Details</DialogTitle>
+              <DialogDescription>
+                Make changes to your income transaction here. Click save when you're done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input id="name" value={currentData.name} className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Username
+                </Label>
+                <Input id="username" value={currentData.username} className="col-span-3" />
+              </div>
             </div>
-          ))}
-          <button type="submit">Save</button>
-        </form>
-      </div>
+            <DialogFooter>
+              <Button onClick={handleDialogSave}>Save changes</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
     </div>
-  );
-};
+  )
+}
 
-UpdateIncome.propTypes = {
-  row: PropTypes.object.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+export default UpdateIncome
 
-export default UpdateIncome;
