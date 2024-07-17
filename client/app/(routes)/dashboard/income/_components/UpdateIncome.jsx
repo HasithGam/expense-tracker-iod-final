@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label"
 function UpdateIncome() {
   return (
     <div>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Edit Income Details</DialogTitle>
@@ -43,7 +43,6 @@ function UpdateIncome() {
               <Button onClick={handleDialogSave}>Save changes</Button>
             </DialogFooter>
           </DialogContent>
-        </Dialog>
     </div>
   )
 }

@@ -9,7 +9,9 @@ import OnetransactionList from '../../../../../components/OnetransactionList';
 
 const categories = ["Select Category", "Salary", "Freelancing", "Investments", "Stocks", "Bitcoin", "Adsense", "Gift", "Other"];
 
-const AddIncome = () => {
+const AddIncome = ({transactionName}) => {
+    const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/${transactionName}`;
+
     const [emojiIcon, setEmojiIcon] = useState('💲');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
 
@@ -24,8 +26,7 @@ const AddIncome = () => {
 
     const [errors, setErrors] = useState({});
 
-    const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/income`;
-
+    
     const validateFields = () => {
         const newErrors = {};
         if (!incomeTitle) newErrors.title = 'Title is required';
@@ -143,7 +144,7 @@ const AddIncome = () => {
             </Dialog>
 
             <div>
-                <OnetransactionList/>
+                <OnetransactionList transactionName={transactionName}/>
             </div>
         </div>
     );

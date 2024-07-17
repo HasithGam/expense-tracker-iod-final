@@ -16,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import UpdateIncome from '@/app/(routes)/dashboard/income/_components/UpdateIncome';
 
 const TransactionDataTable = ({ columns, data = [],onUpdate, onDelete }) => {
   const actionColums = columns(onUpdate, onDelete);
@@ -28,7 +27,7 @@ const TransactionDataTable = ({ columns, data = [],onUpdate, onDelete }) => {
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     initialState: {
-      sorting: [{ id: 'date', desc: true }], // Default sort by date in descending order
+      sorting: [{ id: 'date', desc: true }],
     },
   });
 

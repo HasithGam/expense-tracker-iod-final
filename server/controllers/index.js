@@ -1,4 +1,5 @@
 module.exports = {
     Incomes: require('./income'),
-    Expenses: require('./expense')
+    Expenses: require('./expense'),
+    loginUser: require('./authcontroller'),
 }

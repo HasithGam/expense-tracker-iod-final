@@ -19,9 +19,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/income`;
 
-function OnetransactionList() {
+
+const OnetransactionList = ({transactionName}) => {
+  const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/${transactionName}`;
+  console.log(baseApi);
+  console.log(transactionName);
   const { data: incomes, error } = useSWR(baseApi, fetcher);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [currentData, setCurrentData] = useState(null);
