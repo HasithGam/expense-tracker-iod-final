@@ -5,6 +5,7 @@ const { db } = require('./db/db');
 const incomeRoutes = require('./routes/incomeRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
 const authRoutes = require('./routes/authRoutes');
+const incomeExpenseRoutes = require('./routes/incomeExpenseRoutes');
 const app = express();
 
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use('/api/income', incomeRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use('/api', authRoutes);
+app.use('/api', incomeExpenseRoutes);
 
 const server = () => {
     db();

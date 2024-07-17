@@ -7,11 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import OnetransactionList from '../../../../../components/OnetransactionList';
 
-const categories = ["Select Category", "House Rent", "Bills", "Grocery", "Vehicle", "Bitcoin", "Adsense", "Gift", "Other"];
+const categories = ["Select Category", "House Rent", "Bills", "Grocery", "Vehicle", "Transport", "Restaurent", "Food", "Other"];
 
 const AddExpense = ({transactionName}) => {
     const baseApi = `${process.env.NEXT_PUBLIC_API_URL}/${transactionName}`;
-    const [emojiIcon, setEmojiIcon] = useState('💲');
+    const [emojiIcon, setEmojiIcon] = useState('🔻');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -108,13 +108,13 @@ const AddExpense = ({transactionName}) => {
                                                 />
                                             )}
                                         </div>
-                                        <Input placeholder="e.g. Salary" onChange={(e) => setExpenseTitle(e.target.value)} />
+                                        <Input placeholder="e.g. Bills" onChange={(e) => setExpenseTitle(e.target.value)} />
                                     </div>
                                     {errors.title && <p className='text-red-500'>{errors.title}</p>}
                                 </div>
                                 <div className='mt-2'>
                                     <h2 className='text-black font-medium text-lg my-1 pr-2'>Amount:</h2>
-                                    <Input placeholder="e.g. 5000" type="number" onChange={(e) => setExpenseAmount(e.target.value)} />
+                                    <Input placeholder="e.g. 100" type="number" onChange={(e) => setExpenseAmount(e.target.value)} />
                                     {errors.amount && <p className='text-red-500'>{errors.amount}</p>}
                                 </div>
                                 <div className='mt-2'>
@@ -128,7 +128,7 @@ const AddExpense = ({transactionName}) => {
                                 </div>
                                 <div className='mt-2'>
                                     <h2 className='text-black font-medium text-lg my-1 pr-2'>Description:</h2>
-                                    <Input placeholder="e.g. Job Fortnight Pay" onChange={(e) => setExpenseDescription(e.target.value)} />
+                                    <Input placeholder="e.g. Water Bill" onChange={(e) => setExpenseDescription(e.target.value)} />
                                     {errors.description && <p className='text-red-500'>{errors.description}</p>}
                                 </div>
                                 <div className='mt-2'>
