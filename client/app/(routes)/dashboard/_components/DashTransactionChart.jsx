@@ -141,7 +141,7 @@ function DashTransactionChart() {
               Income/Expense comparison <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Financial year 2023/2024
+              Year 2024
             </div>
           </div>
         </div>
