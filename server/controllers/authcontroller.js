@@ -16,7 +16,10 @@ const login = async (req, res) => {
         // Check if the user exists and the password matches
         if (user && user.password === password) {
             const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY, { expiresIn: "1h" });
-            res.status(200).json({ user, token });
+            const userObj = user.toObject()
+            console.log("user object", userObj);
+            delete userObj.password
+            res.status(200).json({ user: userObj, token });
         } else {
             res.status(401).json({ error: "Invalid Credentials" });
         }

@@ -90,11 +90,6 @@ function DashTransactionChart() {
         <Skeleton className="h-4 w-[250px] bg-gray-400" />
         <Skeleton className="h-4 w-[200px] bg-orange-300" />
       </div>
-      <Skeleton className="h-12 w-12 rounded-full bg-gray-400" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px] bg-gray-400" />
-        <Skeleton className="h-4 w-[200px] bg-orange-300" />
-      </div>
       
     </div>
   );

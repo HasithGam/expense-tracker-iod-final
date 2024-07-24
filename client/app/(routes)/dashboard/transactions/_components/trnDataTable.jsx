@@ -17,8 +17,8 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-const TranDataTable = ({ columns, data = [],onUpdate, onDelete }) => {
-  const actionColums = columns(onUpdate, onDelete);
+const TranDataTable = ({ columns, data = [] }) => {
+  const actionColums = columns();
 
   const table = useReactTable({
     data,
@@ -83,6 +83,26 @@ const TranDataTable = ({ columns, data = [],onUpdate, onDelete }) => {
           )}
         </TableBody>
       </Table>
+      <div className="pagination flex justify-between items-center p-4">
+        <button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+          className="bg-gray-300 px-4 py-2 rounded-md disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="page-info">
+          Page {table.getState().pagination.pageIndex + 1} of{' '}
+          {table.getPageCount()}
+        </span>
+        <button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          className="bg-gray-300 px-4 py-2 rounded-md disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
