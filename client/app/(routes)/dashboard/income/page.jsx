@@ -1,5 +1,6 @@
 import React from 'react'
 import AddIncome from './_components/AddIncome'
+import Footer from '@/app/_components/Footer'
 
 function Income() {
   return (
@@ -8,7 +9,7 @@ function Income() {
       <div>
         <AddIncome transactionName = {'income'}/>
       </div>
-      
+      <Footer/>
     </div>
   )
 }

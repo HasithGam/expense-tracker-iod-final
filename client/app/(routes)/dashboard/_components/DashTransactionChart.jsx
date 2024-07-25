@@ -95,7 +95,7 @@ function DashTransactionChart() {
   );
 
   return (
-    <Card>
+    <Card className='shadow-md'>
       <CardHeader>
         <CardTitle>Area Chart - Income/Expense</CardTitle>
         <CardDescription>

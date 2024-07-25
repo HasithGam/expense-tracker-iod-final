@@ -2,11 +2,11 @@
 import { format } from 'date-fns';
 
 const trnColumns = () => [
-  
   {
     accessorKey: 'title',
     header: 'TITLE',
     editable: true,
+    filterFn: 'includesString',
   },
   {
     accessorKey: 'amount',
@@ -32,8 +32,6 @@ const trnColumns = () => [
     header: 'DESCRIPTION',
     editable: true,
   },
-  
 ];
-
 
 export default trnColumns;
