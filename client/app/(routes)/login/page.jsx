@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './login.css';
 import useAuth from '@/lib/useAuth';
 import { useRouter } from "next/navigation";
@@ -9,25 +9,21 @@ const LoginPage = () => {
   const { login } = useAuth();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
   const [loginError, setLoginError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-
       let hasError = false;
-      setNameError("");
+      setLoginError("");
       setEmailError("");
       setPasswordError("");
 
       if (email.trim() === "") {
-      setEmailError("Please enter a valid email address.");
-      hasError = true;
+        setEmailError("Please enter a valid email address.");
+        hasError = true;
       }
 
       if (password.trim() === "") {
@@ -37,11 +33,15 @@ const LoginPage = () => {
 
       if (hasError) return;
 
-      await login(email, password);
-      router.push('/dashboard');
+      const result = await login(email, password);
+      if (!result.success) {
+        setLoginError(result.message);
+      } else {
+        router.push('/dashboard');
+      }
     } catch (error) {
       console.error('Login failed:', error);
-      setPasswordError("Your username or password is incorrect!");
+      setLoginError("Login failed. Please try again later.");
     }
   }
 
@@ -68,10 +68,10 @@ const LoginPage = () => {
                 type="password"
                 placeholder="Password"
               />
-              {emailError && <p className="error-message">{emailError}</p>}
+              {passwordError && <p className="error-message">{passwordError}</p>}
             </>
             <button type="submit">Login</button>
-            {emailError && <p className="error-message">{emailError}</p>}
+            {loginError && <p className="error-message">{loginError}</p>}
             <div className="form-help">
               <div className="remember">
                 <input type="checkbox" id="remember" />
