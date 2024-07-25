@@ -39,6 +39,7 @@ const useAuth = () => {
     };
 
     const logOut = () => {
+        //Remove everything from browser local storage
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         setUser(null);
