@@ -21,7 +21,7 @@ const login = async (req, res) => {
             delete userObj.password
             res.status(200).json({ user: userObj, token });
         } else {
-            res.status(401).json({ error: "Invalid Credentials" });
+            res.status(401).json({ error: "Please check your email or password again!" });
         }
     } catch (err) {
         res.status(500).json({ error: "Server Error" });

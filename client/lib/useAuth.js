@@ -13,7 +13,6 @@ const useAuth = () => {
     });
 
     const login = async (email, password) => {
-        console.log("email and pw", email + ' ' + password);
         try {
             const response = await fetch(`${baseApi}/login`, {
                 method: 'POST',
@@ -24,17 +23,15 @@ const useAuth = () => {
             });
             const data = await response.json();
             if (!response.ok) {
-                console.log("Login failed!", data.error);
-                return { success: false, message: data.error };
-            } else {
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("user", JSON.stringify(data.user));
-                setUser(data.user);
-                return { success: true, message: "Login successful!" };
+                throw new Error(data.error || 'Login failed');
             }
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            setUser(data.user);
+            return { success: true, message: "Login successful!" };
         } catch (err) {
             console.log("Login failed!", err);
-            return { success: false, message: "Login failed. Please try again later." };
+            return { success: false, message: err.message || "Login failed. Please try again later." };
         }
     };
 
