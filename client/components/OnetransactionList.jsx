@@ -103,7 +103,7 @@ const OnetransactionList = ({transactionName}) => {
 
   return (
     <div>
-      <h1 className='pt-5 pb-5 text-2xl'>Income Statement</h1>
+      <h1 className='pt-5 pb-5 text-2xl'>Statement</h1>
       <TransactionDataTable
         columns={columns}
         data={incomes.data}
@@ -115,9 +115,9 @@ const OnetransactionList = ({transactionName}) => {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Edit Income Details</DialogTitle>
+              <DialogTitle>Edit Details</DialogTitle>
               <DialogDescription>
-                Make changes to your income transaction here. Click save when you're done.
+                Make changes to your transaction here. Click save when you're done.
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">

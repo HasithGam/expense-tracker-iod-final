@@ -27,7 +27,7 @@ const LoginPage = () => {
       }
 
       if (password.trim() === "") {
-        setPasswordError("Your password must contain between 4 and 60 characters.");
+        setPasswordError("Please enter correct password.");
         hasError = true;
       }
 

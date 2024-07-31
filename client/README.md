@@ -75,7 +75,7 @@ tailwindcss: ^3.4.1
 Features
 
 Next.js: React framework with server-side rendering.
-Radix UI: Unstyled, accessible components for building high-quality design systems and web apps.
+Tailwind / Shadcn components: Unstyled, accessible components for building high-quality design systems and web apps.
 React Table: Headless UI for building tables in React.
 Tailwind CSS: Utility-first CSS framework for rapid UI development.
 Recharts: Composable charting library built on React components.
